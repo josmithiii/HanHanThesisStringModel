@@ -38,7 +38,7 @@ public:
         //std::cout<<"elsewhere "<<r1<<" "<<r2<<"\n";
     }
     
-    void getcusParam(float* tau,float* omega,float* p,float* dispersion,float* alpha1,float* alpha2,int dimtype,float* length,float* thickness)
+    void getcusParam(std::atomic<float>* tau,std::atomic<float>* omega,std::atomic<float>* p,std::atomic<float>* dispersion,std::atomic<float>* alpha1,std::atomic<float>* alpha2,int dimtype,std::atomic<float>* length,std::atomic<float>* thickness)
     {
         //this function fetch parameters from the customized GUI and calculate the corresponding parameters in order to synthesize the sound
         //for each dimension, different algorithms are called
