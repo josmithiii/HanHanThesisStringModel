@@ -10,7 +10,10 @@
 
 #pragma once
 
-#include "../JuceLibraryCode/JuceHeader.h"
+#include <juce_audio_processors/juce_audio_processors.h>
+
+using namespace juce;
+
 #include "SynthSound.h"
 #include "SynthVoice.h"
 
@@ -56,19 +59,19 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
-    
-     MidiOutput* getMidiOutput()
-    {
-        return midiOutput.get();
-    }
-    
-    
+
+    // MidiOutput* getMidiOutput()
+    // {
+    //     return midiOutput.get();
+    // }
+
+
     AudioProcessorValueTreeState tree; //to link values from the slider to processor
     int dim;
     int tension, stiffness;
     Synthesiser mySynth;
 private:
-   std::unique_ptr<MidiOutput> midiOutput;
+   // std::unique_ptr<MidiOutput> midiOutput;
     SynthVoice* myVoice;
     
     double lastSampleRate;

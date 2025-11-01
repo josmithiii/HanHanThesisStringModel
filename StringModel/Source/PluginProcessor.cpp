@@ -12,6 +12,23 @@
 #include "PluginEditor.h"
 
 //==============================================================================
+static AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
+{
+    AudioProcessorValueTreeState::ParameterLayout layout;
+
+    layout.add(std::make_unique<AudioParameterFloat> ("tau", "tau", NormalisableRange<float> (0.01f,0.2f),0.07f));
+    layout.add(std::make_unique<AudioParameterFloat> ("omega", "omega", NormalisableRange<float> (1256.0f,7539.0f),3509.0f));
+    layout.add(std::make_unique<AudioParameterFloat> ("p", "p", NormalisableRange<float> (0.0001f,1.0f),0.0001f));
+    layout.add(std::make_unique<AudioParameterFloat> ("dispersion", "dispersion", NormalisableRange<float> (0.0001f,0.9f),0.06f));
+    layout.add(std::make_unique<AudioParameterFloat> ("alpha1", "alpha1", NormalisableRange<float> (0.1f,1.0f),0.5f));
+    layout.add(std::make_unique<AudioParameterFloat> ("alpha2", "alpha2", NormalisableRange<float> (0.0001f,1.0f),1.13f));
+    layout.add(std::make_unique<AudioParameterInt> ("dimtype", "dimtype", 0,2,1));
+    layout.add(std::make_unique<AudioParameterFloat> ("length", "length", NormalisableRange<float> (M_PI/2,2*M_PI),M_PI));
+    layout.add(std::make_unique<AudioParameterFloat> ("thickness", "thickness", NormalisableRange<float> (0.5,3),1));
+
+    return layout;
+}
+
 StringModelAudioProcessor::StringModelAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
@@ -22,19 +39,10 @@ StringModelAudioProcessor::StringModelAudioProcessor()
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
                        ),
+      tree (*this,nullptr,"PARAMETERS", createParameterLayout())
+#else
+     : tree (*this,nullptr,"PARAMETERS", createParameterLayout())
 #endif
-tree (*this,nullptr,"PARAMETERS",
-{   std::make_unique<AudioParameterFloat> ("tau", "tau", NormalisableRange<float> (0.01f,0.2f),0.07f),
-    std::make_unique<AudioParameterFloat> ("omega", "omega", NormalisableRange<float> (1256.0f,7539.0f),3509.0f),
-    std::make_unique<AudioParameterFloat> ("p", "p", NormalisableRange<float> (0.0001f,1.0f),0.0001f),
-    std::make_unique<AudioParameterFloat> ("dispersion", "dispersion", NormalisableRange<float> (0.0001f,0.9f),0.06f),
-    std::make_unique<AudioParameterFloat> ("alpha1", "alpha1", NormalisableRange<float> (0.1f,1.0f),0.5f),
-    std::make_unique<AudioParameterFloat> ("alpha2", "alpha2", NormalisableRange<float> (0.0001f,1.0f),1.13f),
-    std::make_unique<AudioParameterInt> ("dimtype", "dimtype", 0,2,1),
-    std::make_unique<AudioParameterFloat> ("length", "length", NormalisableRange<float> (M_PI/2,2*M_PI),M_PI),
-    std::make_unique<AudioParameterFloat> ("thickness", "thickness", NormalisableRange<float> (0.5,3),1)
-    
-})
 {
     mySynth.clearVoices();
     for(int i=0;i<1;i++){
@@ -212,7 +220,7 @@ void StringModelAudioProcessor::setStateInformation (const void* data, int sizeI
 
 //==============================================================================
 // This creates new instances of the plugin..
-AudioProcessor* JUCE_CALLTYPE createPluginFilter()
+juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
     return new StringModelAudioProcessor();
 }

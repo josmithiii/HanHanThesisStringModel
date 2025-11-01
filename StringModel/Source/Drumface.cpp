@@ -9,6 +9,7 @@
 */
 
 #include "Drumface.h"
+#include "BinaryData.h"
 #include <math.h>
 Drumface::Drumface(StringModelAudioProcessor& p): processor(p),helpButton("help")
 {
@@ -102,13 +103,13 @@ void Drumface::mouseDown (const MouseEvent& e)
 void Drumface::clicked(int midiNote)
 {
     processor.mySynth.noteOn(1,midiNote,120);
-        if (processor.getMidiOutput() != nullptr)
-            processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOn(1, midiNote, 1.f));
-               
-    
-        else{
-               //processor.mySynth.noteOff(1, midiNote, 0, true);
-               if (processor.getMidiOutput() != nullptr)
-                   processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOff(1, midiNote, 0.f));
-           }
+        // if (processor.getMidiOutput() != nullptr)
+        //     processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOn(1, midiNote, 1.f));
+
+
+        // else{
+        //        //processor.mySynth.noteOff(1, midiNote, 0, true);
+        //        if (processor.getMidiOutput() != nullptr)
+        //            processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOff(1, midiNote, 0.f));
+        //    }
 }

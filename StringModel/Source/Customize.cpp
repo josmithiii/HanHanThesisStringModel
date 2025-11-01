@@ -9,9 +9,7 @@
 */
 
 #include "Customize.h"
-
-#include "../JuceLibraryCode/JuceHeader.h"
-#include "Customize.h"
+#include "BinaryData.h"
 #include <math.h>
 //==============================================================================
 Customize::Customize(StringModelAudioProcessor& p):
@@ -23,13 +21,14 @@ processor(p),playButton("play",DrawableButton::ButtonStyle::ImageStretched),mySt
     addAndMakeVisible(myString);
     addAndMakeVisible(&title);
    title.setText("This is a string",dontSendNotification);
-   
-   static Typeface::Ptr myType2 = Typeface::createSystemTypefaceFor(BinaryData::Amagro_bold_ttf,
-                                                               BinaryData::Amagro_bold_ttfSize);
-   Font* myFont2 = new Font(myType2);
-   myFont2->setSizeAndStyle(30, 2, 1.0, 0.0);
-   title.setFont(*myFont2);
-   
+
+   // static Typeface::Ptr myType2 = Typeface::createSystemTypefaceFor(BinaryData::Amagro_bold_ttf,
+   //                                                            BinaryData::Amagro_bold_ttfSize);
+   // Font* myFont2 = new Font(myType2);
+   // myFont2->setSizeAndStyle(30, 2, 1.0, 0.0);
+   // title.setFont(*myFont2);
+   title.setFont(Font(30.0f, Font::bold));
+
    title.setColour(Label::ColourIds::textColourId , Colours::black);
     
     
@@ -51,9 +50,10 @@ processor(p),playButton("play",DrawableButton::ButtonStyle::ImageStretched),mySt
     playButton.onStateChange = [this] {playButtonClicked(87,playButton.isDown());};
     addAndMakeVisible(playButton);
 
-    static Typeface::Ptr myType = Typeface::createSystemTypefaceFor(BinaryData::Ubuntu_L_ttf,
-                                                                    BinaryData::Ubuntu_L_ttfSize);
-    Font* myFont = new Font(myType);
+    // static Typeface::Ptr myType = Typeface::createSystemTypefaceFor(BinaryData::Ubuntu_L_ttf,
+    //                                                                 BinaryData::Ubuntu_L_ttfSize);
+    // Font* myFont = new Font(myType);
+    Font* myFont = new Font(14.0f);
     //myFont->setSizeAndStyle(30, 2, 1.0, 0.0);
     
     
@@ -248,14 +248,14 @@ void Customize::playButtonClicked(int midiNote,bool isDown)
 {
     if(isDown){
         processor.mySynth.noteOn(1,midiNote,120);
-        if (processor.getMidiOutput() != nullptr)
-                   processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOn(1, midiNote, 1.f));
-        
+        // if (processor.getMidiOutput() != nullptr)
+        //            processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOn(1, midiNote, 1.f));
+
     }
     else{
         //processor.mySynth.noteOff(1, midiNote, 0, true);
-        if (processor.getMidiOutput() != nullptr)
-            processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOff(1, midiNote, 0.f));
+        // if (processor.getMidiOutput() != nullptr)
+        //     processor.getMidiOutput()->sendMessageNow(MidiMessage::noteOff(1, midiNote, 0.f));
     }
 }
 

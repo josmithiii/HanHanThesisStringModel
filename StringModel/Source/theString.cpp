@@ -9,6 +9,7 @@
 */
 
 #include "theString.h"
+#include "BinaryData.h"
 #include <math.h>
 theString::theString(StringModelAudioProcessor& p): processor(p),helpButton("help")
 {
