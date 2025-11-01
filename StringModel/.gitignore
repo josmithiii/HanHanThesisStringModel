@@ -1,0 +1,25 @@
+# JUCE auto-generated files
+JuceLibraryCode/
+
+# Build outputs
+Builds/
+build/
+cmake-build-*/
+
+# IDE files
+.vscode/
+.idea/
+*.xcodeproj
+*.xcworkspace
+
+# macOS
+.DS_Store
+
+# Compiled binaries
+*.app
+*.component
+*.vst
+*.vst3
+*.dylib
+*.so
+*.dll
