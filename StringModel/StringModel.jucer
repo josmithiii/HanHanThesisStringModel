@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="ez6eyY" name="StringModel" projectType="audioplug" jucerVersion="5.4.5"
-              pluginName="Stringmodel" pluginManufacturer="THESIS" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
-              pluginFormats="buildAU,buildVST3" companyName="THESIS">
+<JUCERPROJECT id="ez6eyY" name="StringModel" projectType="audioplug" pluginName="Stringmodel"
+              pluginManufacturer="THESIS" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn"
+              companyName="THESIS" jucerFormatVersion="1" pluginFormats="buildStandalone">
   <MAINGROUP id="RvdlOT" name="StringModel">
     <GROUP id="{1E368382-AFE3-B851-6460-B81F306FAB88}" name="Source">
+      <FILE id="BhawhR" name="Existence-Light-GPT5.otf" compile="0" resource="1"
+            file="Source/Existence-Light-GPT5.otf"/>
       <FILE id="Jqe2qa" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="UrgEKj" name="PluginProcessor.h" compile="0" resource="0"
@@ -18,14 +20,13 @@
       <FILE id="SnWXSu" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
       <FILE id="ybFIVA" name="cusSlider.h" compile="0" resource="0" file="Source/cusSlider.h"/>
       <FILE id="MIgLOv" name="stringOn.png" compile="0" resource="1" file="Source/stringOn.png"/>
-      <FILE id="xhtMAa" name="question2.png" compile="0" resource="1" file="../../../../Desktop/question2.png"/>
+      <FILE id="xhtMAa" name="question2.png" compile="0" resource="1" file="Source/question2.png"/>
       <FILE id="IvXTdD" name="boxOff.png" compile="0" resource="1" file="Source/boxOff.png"/>
       <FILE id="TVYZJk" name="drumOff.png" compile="0" resource="1" file="Source/drumOff.png"/>
       <FILE id="QqBpQH" name="stringOff.png" compile="0" resource="1" file="Source/stringOff.png"/>
       <FILE id="jAwQ4K" name="boxOn.png" compile="0" resource="1" file="Source/boxOn.png"/>
       <FILE id="UFcegy" name="drumOn.png" compile="0" resource="1" file="Source/drumOn.png"/>
-      <FILE id="Q9Iy0s" name="Existence-Light.otf" compile="0" resource="1"
-            file="../../../NYU/THESIS/StringModel/Source/Existence-Light.otf"/>
+      <FILE id="Q9Iy0s" name="Existence-Light.otf" compile="0" resource="1" file="Source/Existence-Light.otf"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

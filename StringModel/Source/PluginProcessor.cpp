@@ -162,7 +162,7 @@ void StringModelAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBu
         if((myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i))))
         {
             //add my synthesizer, inputs are values from my new sliders
-            myVoice->getcusParam(tree.getRawParameterValue("tau"),//this is the actual step that gets value from the tree, which are linked with slider
+          myVoice->getcusParam(tree.getRawParameterValue("tau"),//this is the actual step that gets value from the tree, which are linked with slider
                                  tree.getRawParameterValue("omega"),
                                  tree.getRawParameterValue("p"),
                                  tree.getRawParameterValue("dispersion"),

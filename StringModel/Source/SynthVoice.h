@@ -34,7 +34,7 @@ public:
     
     //==================================
     //some function that grabs value from the slider, and then either returns or set the signal of my synethesized drum sound
-    void getcusParam(float* tau,float* omega,float* p,float* dispersion,float* alpha1,float* alpha2,float* dim1,float* dim2, float* dim3)
+    void getcusParam(std::atomic<float>* tau,std::atomic<float>* omega,std::atomic<float>* p,std::atomic<float>* dispersion,std::atomic<float>* alpha1,std::atomic<float>* alpha2,std::atomic<float>* dim1,std::atomic<float>* dim2, std::atomic<float>* dim3)
     {
         //this function fetch parameters from the customized GUI and calculate the corresponding parameters in order to synthesize the sound
         //for each dimension, different algorithms are called
